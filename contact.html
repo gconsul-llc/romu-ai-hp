@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | Tonos. by romu.ai</title>
+  <meta name="description" content="Tonosシリーズに関するお問い合わせ・デモのご案内・料金のご相談はこちらから。">
+  <link rel="canonical" href="https://romu.ai/contact">
+  <meta property="og:title" content="お問い合わせ | Tonos. by romu.ai">
+  <meta property="og:description" content="Tonosシリーズに関するお問い合わせ・デモのご案内・料金のご相談はこちらから。">
+  <meta property="og:url" content="https://romu.ai/contact">
+  <meta property="og:site_name" content="Tonos. by romu.ai">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#F4F1EC;font-family:'Noto Sans JP',sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    .wrap{max-width:900px;margin:0 auto;background:white;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:.5px solid #e0ddd8;}
+    .nav-logo{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:600;color:#1C2B4A;}
+    .nav-logo span{color:#B8905A;}
+    .nav-links{display:flex;gap:24px;align-items:center;}
+    .nav-link{font-size:12px;color:#777;text-decoration:none;}
+    .nav-link:hover{color:#1C2B4A;}
+    .hero{background:#1C2B4A;color:white;padding:48px 56px;}
+    .hero-label{font-size:10px;letter-spacing:.15em;color:rgba(184,144,90,.8);margin-bottom:14px;}
+    .hero-title{font-family:'Shippori Mincho',serif;font-size:32px;font-weight:500;color:white;}
+    .hero-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:10px;line-height:1.8;}
+    .body{padding:56px;}
+    .form-group{margin-bottom:28px;}
+    .form-label{font-size:13px;font-weight:500;color:#1C2B4A;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+    .form-required{font-size:10px;background:#B8905A;color:white;padding:2px 6px;border-radius:2px;}
+    .form-optional{font-size:10px;background:#e0ddd8;color:#777;padding:2px 6px;border-radius:2px;}
+    .form-input,.form-textarea{width:100%;padding:12px 16px;border:0.5px solid #e0ddd8;border-radius:6px;font-size:14px;font-family:inherit;color:#1C2B4A;background:white;transition:border-color .2s;}
+    .form-input:focus,.form-textarea:focus{outline:none;border-color:#1C2B4A;}
+    .form-textarea{min-height:160px;resize:vertical;line-height:1.8;}
+    .form-hint{font-size:11px;color:#aaa;margin-top:6px;}
+    .hp-field{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
+    .btn-submit{background:#1C2B4A;color:white;font-size:14px;font-weight:500;padding:14px 40px;border-radius:4px;border:none;cursor:pointer;font-family:inherit;letter-spacing:.03em;transition:background .2s;}
+    .btn-submit:hover{background:#263a5e;}
+    .btn-submit:disabled{background:#ccc;cursor:not-allowed;}
+    .form-status{margin-top:16px;font-size:13px;line-height:1.8;}
+    .form-status.success{color:#0F6E56;}
+    .form-status.error{color:#A32D2D;}
+    .footer{background:#f5f4f1;padding:28px 40px;border-top:.5px solid #e0ddd8;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    .footer-left{display:flex;flex-direction:column;gap:4px;}
+    .footer-logo{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:600;color:#1C2B4A;}
+    .footer-logo span{color:#B8905A;}
+    .footer-company{font-size:11px;color:#777;}
+    .footer-links{display:flex;gap:20px;}
+    .footer-link{font-size:11px;color:#777;text-decoration:none;}
+    .footer-link:hover{color:#1C2B4A;}
+    .footer-copy{font-size:11px;color:#777;}
+    @media(max-width:768px){
+      .nav{padding:16px 20px;}
+      .hero{padding:36px 24px;}
+      .hero-title{font-size:24px;}
+      .body{padding:36px 20px;}
+      .footer{padding:24px 20px;flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a href="/" class="nav-logo">Tonos<span>.</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">トップ</a>
+      <a href="/seikyu" class="nav-link">SeikYu</a>
+      <a href="/meisai" class="nav-link">Meisai</a>
+      <a href="/rental" class="nav-link">Rental</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">CONTACT</div>
+    <div class="hero-title">お問い合わせ</div>
+    <div class="hero-sub">デモのご案内・料金のご相談・導入前のヒアリングなど、お気軽にお問い合わせください。<br>通常1営業日以内にご返信いたします。</div>
+  </div>
+
+  <div class="body">
+    <form id="contactForm">
+      <div class="form-group">
+        <div class="form-label">お名前 <span class="form-required">必須</span></div>
+        <input type="text" name="name" class="form-input" placeholder="山田 太郎" required>
+      </div>
+      <div class="form-group">
+        <div class="form-label">会社名 <span class="form-optional">任意</span></div>
+        <input type="text" name="company" class="form-input" placeholder="株式会社○○">
+      </div>
+      <div class="form-group">
+        <div class="form-label">メールアドレス <span class="form-required">必須</span></div>
+        <input type="email" name="email" class="form-input" placeholder="example@company.co.jp" required>
+      </div>
+      <div class="form-group">
+        <div class="form-label">お問い合わせ内容 <span class="form-required">必須</span></div>
+        <textarea name="message" class="form-textarea" placeholder="ご質問・ご相談内容をご記入ください" required></textarea>
+        <div class="form-hint">デモ希望・料金相談・導入相談など、なんでもお気軽にどうぞ。</div>
+      </div>
+      <!-- Honeypot -->
+      <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+      <button type="submit" class="btn-submit" id="submitBtn">送信する</button>
+      <div id="formStatus" class="form-status"></div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="footer-logo">Tonos<span>.</span> by romu.ai</div>
+      <div class="footer-company">合同会社グレースコンサルティング</div>
+    </div>
+    <div class="footer-links">
+      <a href="/" class="footer-link">トップ</a>
+      <a href="/privacy" class="footer-link">プライバシーポリシー</a>
+      <a href="/terms" class="footer-link">利用規約</a>
+    </div>
+    <div class="footer-copy">© 合同会社グレースコンサルティング</div>
+  </footer>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById("submitBtn");
+  const status = document.getElementById("formStatus");
+  const form = e.target;
+
+  btn.disabled = true;
+  btn.textContent = "送信中...";
+  status.textContent = "";
+  status.className = "form-status";
+
+  const data = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    company: form.company.value.trim(),
+    message: form.message.value.trim(),
+    website: form.website.value,
+  };
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const json = await res.json();
+
+    if (res.ok) {
+      status.textContent = "お問い合わせありがとうございます。1営業日以内にご返信いたします。";
+      status.className = "form-status success";
+      form.reset();
+    } else {
+      status.textContent = json.error || "送信に失敗しました。お手数ですが contact@romu.ai まで直接ご連絡ください。";
+      status.className = "form-status error";
+    }
+  } catch (err) {
+    status.textContent = "送信に失敗しました。お手数ですが contact@romu.ai まで直接ご連絡ください。";
+    status.className = "form-status error";
+  }
+
+  btn.disabled = false;
+  btn.textContent = "送信する";
+});
+</script>
+</body>
+</html>
