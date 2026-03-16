@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totono-Rental | 現場を知る者が設計したから、欲しい機能がある。 - romu.ai</title>
+  <meta name="description" content="レンタカー・整備工場・あらゆるレンタル業の管理業務を一つのシステムで完結。予約サイト連動・HP連動・在庫管理をワンストップで。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#F4F1EC;}
+    a{text-decoration:none;color:inherit;}
+    .nav{max-width:900px;margin:0 auto;background:white;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:0.5px solid #e0ddd8;font-family:'Noto Sans JP',sans-serif;}
+    .nav-logo{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:600;color:#1C2B4A;}
+    .nav-logo span{color:#B8905A;}
+    .nav-links{display:flex;gap:24px;align-items:center;}
+    .nav-link{font-size:12px;color:#777;text-decoration:none;}
+    .nav-link:hover{color:#1C2B4A;}
+    .nav-cta{background:#1C2B4A;color:white;font-size:12px;padding:8px 18px;border-radius:4px;text-decoration:none;font-family:inherit;letter-spacing:.03em;}
+    .nav-cta:hover{background:#263a5e;}
+    .p{font-family:'Noto Sans JP',sans-serif;max-width:900px;margin:0 auto;color:#1C2B4A;background:white;}
+    .hero{background:#1C2B4A;color:white;padding:52px 56px 44px;border-radius:16px 16px 0 0;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-20px;right:60px;width:1px;height:200%;background:white;opacity:.05;transform:rotate(15deg);}
+    .hero::after{content:'';position:absolute;top:-20px;right:130px;width:1px;height:200%;background:white;opacity:.04;transform:rotate(15deg);}
+    .hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+    .hero-product{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:600;color:white;}
+    .hero-product em{color:#B8905A;font-style:normal;}
+    .hero-domain{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;border-left:.5px solid rgba(255,255,255,.15);padding-left:10px;}
+    .htag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,144,90,.45);color:rgba(184,144,90,.9);font-size:11px;padding:5px 16px;border-radius:2px;letter-spacing:.1em;margin-bottom:20px;}
+    .htag::before{content:'';width:16px;height:1px;background:rgba(184,144,90,.7);}
+    .htitle{font-family:'Shippori Mincho',serif;font-size:36px;font-weight:500;line-height:1.25;margin:0 0 10px;color:white;}
+    .htitle-sub{font-size:18px;font-weight:400;color:rgba(255,255,255,.6);display:block;margin-bottom:18px;font-family:'Shippori Mincho',serif;}
+    .hsub{font-size:13px;color:rgba(255,255,255,.72);line-height:2;max-width:520px;font-weight:300;}
+    .ec-row{display:flex;gap:7px;margin-top:24px;flex-wrap:wrap;}
+    .ec-tag{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:11px;padding:4px 12px;border-radius:2px;}
+    .body{padding:44px 56px;background:white;border:.5px solid #e0ddd8;border-top:none;border-radius:0 0 16px 16px;}
+    .sl{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .sl-line{flex:1;height:.5px;background:#e0ddd8;}
+    .sl-text{font-size:10px;letter-spacing:.15em;color:#B8905A;font-weight:500;white-space:nowrap;}
+    .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+    .proof{background:#1C2B4A;border-radius:8px;padding:22px 24px;}
+    .proof-label{font-size:10px;color:rgba(184,144,90,.8);letter-spacing:.1em;margin-bottom:8px;}
+    .proof-title{font-family:'Shippori Mincho',serif;font-size:16px;color:white;font-weight:500;margin-bottom:8px;line-height:1.5;}
+    .proof-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.8;}
+    .proof-badge{display:inline-block;background:rgba(184,144,90,.25);border:1px solid rgba(184,144,90,.4);color:rgba(184,144,90,.9);font-size:10px;padding:3px 10px;border-radius:2px;margin-top:10px;letter-spacing:.05em;}
+    .fg3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+    .fc{padding:18px;border:.5px solid #e0ddd8;border-radius:8px;border-left:2px solid #1C2B4A;}
+    .fc.g{border-left-color:#B8905A;}
+    .fc-num{font-size:10px;color:#B8905A;font-weight:500;letter-spacing:.08em;margin-bottom:8px;}
+    .fc-name{font-size:12.5px;font-weight:500;margin-bottom:5px;color:#1C2B4A;}
+    .fc-desc{font-size:11px;color:#777;line-height:1.75;}
+    .fc-tag{display:inline-block;font-size:10px;background:rgba(28,43,74,.08);color:#1C2B4A;padding:2px 8px;border-radius:2px;margin-top:6px;}
+    .hp-box{background:rgba(28,43,74,.05);border:.5px solid rgba(28,43,74,.2);border-radius:8px;padding:20px 24px;margin-bottom:32px;display:flex;gap:16px;align-items:flex-start;}
+    .hp-badge{background:#1C2B4A;color:white;font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;white-space:nowrap;margin-top:2px;flex-shrink:0;}
+    .hp-text{font-size:12px;color:#777;line-height:1.85;}
+    .hp-text strong{color:#1C2B4A;font-weight:500;}
+    .ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px;}
+    .ind{padding:18px;border:.5px solid #e0ddd8;border-radius:8px;}
+    .ind-title{font-size:12.5px;font-weight:500;color:#1C2B4A;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid #e0ddd8;}
+    .ind-item{font-size:11px;color:#777;padding:3px 0;line-height:1.65;display:flex;gap:6px;}
+    .ind-dot{width:4px;height:4px;border-radius:50%;background:#B8905A;flex-shrink:0;margin-top:6px;}
+    .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+    .vc{background:#f5f4f1;border:.5px solid #e0ddd8;border-radius:8px;padding:22px;position:relative;}
+    .vc-q{font-family:'Shippori Mincho',serif;font-size:40px;color:rgba(184,144,90,.2);position:absolute;top:10px;left:14px;line-height:1;}
+    .vc-body{font-size:11.5px;color:#777;line-height:1.85;margin-bottom:14px;padding-top:6px;}
+    .vc-meta{display:flex;align-items:center;gap:10px;border-top:.5px solid #e0ddd8;padding-top:12px;}
+    .vc-icon{width:34px;height:34px;border-radius:50%;background:white;border:.5px solid #e0ddd8;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .vc-icon svg{width:15px;height:15px;stroke:#777;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+    .vc-name{font-size:12px;font-weight:500;color:#1C2B4A;}
+    .vc-desc{font-size:11px;color:#777;margin-top:1px;}
+    .pg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+    .pc{border:.5px solid #e0ddd8;border-radius:8px;padding:26px;}
+    .pc.feat{border-color:#1C2B4A;border-width:1.5px;}
+    .pc-top{display:flex;justify-content:flex-end;margin-bottom:18px;}
+    .pc-badge{font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;letter-spacing:.05em;}
+    .feat .pc-badge{background:#1C2B4A;color:white;}
+    .saas .pc-badge{background:#f5f4f1;color:#777;border:.5px solid #ccc;}
+    .pc-plan{font-size:10px;color:#777;margin-bottom:5px;letter-spacing:.05em;}
+    .pc-amt{font-size:28px;font-weight:700;color:#1C2B4A;line-height:1;}
+    .pc-unit{font-size:11px;font-weight:400;color:#777;margin-left:3px;}
+    .pc-note{font-size:11px;color:#777;margin:8px 0 4px;line-height:1.7;}
+    .pc-add{font-size:11px;color:#185FA5;margin-top:3px;}
+    .pc-div{height:.5px;background:#e0ddd8;margin:14px 0;}
+    .pc-li{font-size:11px;color:#777;padding:3px 0;display:flex;gap:7px;line-height:1.6;}
+    .pc-ck{color:#1C2B4A;font-weight:700;flex-shrink:0;}
+    .ft{border-top:.5px solid #e0ddd8;padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    .fn{font-size:11px;color:#777;line-height:1.9;}
+    .cbtn{background:#1C2B4A;color:white;font-size:12px;font-weight:500;padding:10px 22px;border-radius:4px;text-decoration:none;font-family:inherit;letter-spacing:.03em;}
+    .cbtn:hover{background:#263a5e;}
+    .footer{max-width:900px;margin:0 auto;background:#f5f4f1;padding:28px 40px;border-top:0.5px solid #e0ddd8;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Noto Sans JP',sans-serif;}
+    .footer-left{display:flex;flex-direction:column;gap:4px;}
+    .footer-logo{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:600;color:#1C2B4A;}
+    .footer-logo span{color:#B8905A;}
+    .footer-company{font-size:11px;color:#777;}
+    .footer-links{display:flex;gap:20px;}
+    .footer-link{font-size:11px;color:#777;text-decoration:none;}
+    .footer-link:hover{color:#1C2B4A;}
+    .footer-copy{font-size:11px;color:#777;}
+
+    @media(max-width:768px){
+      .nav{padding:16px 20px;}
+      .hero{padding:36px 24px 32px;border-radius:0;}
+      .htitle{font-size:24px;}
+      .body{padding:28px 20px;border-radius:0;}
+      .proof-grid{grid-template-columns:1fr;}
+      .fg3{grid-template-columns:1fr;}
+      .voice-grid{grid-template-columns:1fr;}
+      .ind-grid{grid-template-columns:1fr;}
+      .pg{grid-template-columns:1fr;}
+      .hp-box{flex-direction:column;}
+      .footer{padding:24px 20px;flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">Totono<span>.</span></a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">トップ</a>
+    <a href="/seikyu.html" class="nav-link">SeikYu</a>
+    <a href="mailto:info@romu.ai" class="nav-cta">お問い合わせ</a>
+  </div>
+</nav>
+
+<div class="p">
+  <div class="hero">
+    <div class="hero-brand">
+      <div class="hero-product">Totono-<em>Rental</em></div>
+      <div class="hero-domain">romu.ai &nbsp;|&nbsp; 合同会社グレースコンサルティング</div>
+    </div>
+    <div class="htag">レンタル・在庫管理システム</div>
+    <h1 class="htitle">
+      <span class="htitle-sub">汎用型 レンタル管理プラットフォーム</span>
+      現場を知る者が設計したから、<br>欲しい機能がある。
+    </h1>
+    <p class="hsub">直感で使える。HPと繋がる。コストは最小限に。レンタカー・整備工場・あらゆるレンタル業の管理業務を、一つのシステムで完結させます。</p>
+    <div class="ec-row">
+      <div class="ec-tag">予約サイト連動</div>
+      <div class="ec-tag">レンタカー対応</div>
+      <div class="ec-tag">整備工場対応</div>
+      <div class="ec-tag">汎用型・業種を選ばない</div>
+      <div class="ec-tag">初期チューニング込み</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="sl"><div class="sl-text">PROOF</div><div class="sl-line"></div></div>
+    <div class="proof-grid">
+      <div class="proof">
+        <div class="proof-label">CASE 01</div>
+        <div class="proof-title">レンタカー会社への<br>導入実績</div>
+        <div class="proof-desc">車両の貸出・返却・在庫管理・予約サイト連動をワンシステムで実現。管理コストを大幅に削減。</div>
+        <div class="proof-badge">導入実績あり</div>
+      </div>
+      <div class="proof">
+        <div class="proof-label">CASE 02</div>
+        <div class="proof-title">自動車整備工場への<br>導入実績</div>
+        <div class="proof-desc">車両管理・入出庫管理・顧客管理を一元化。「痒い所に手が届く」と現場から高評価。</div>
+        <div class="proof-badge">導入実績あり</div>
+      </div>
+    </div>
+
+    <div class="sl"><div class="sl-text">FEATURES</div><div class="sl-line"></div></div>
+    <div class="fg3">
+      <div class="fc"><div class="fc-num">FEATURE 01</div><div class="fc-name">在庫・台数管理</div><div class="fc-desc">車両・機材・備品の在庫をリアルタイムで把握。貸出中・返却済み・整備中のステータスを一画面で管理。</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 02</div><div class="fc-name">貸出・返却管理</div><div class="fc-desc">貸出日・返却予定日・実返却日を記録。延滞アラートで回収漏れを防止します。</div><div class="fc-tag">延滞アラート</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 03</div><div class="fc-name">予約管理・予約サイト連動</div><div class="fc-desc">予約サイトとリアルタイム連動。ダブルブッキングを防止し、予約状況を一元管理します。</div><div class="fc-tag">予約サイト連動済み</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 04</div><div class="fc-name">HPとの完全連動</div><div class="fc-desc">自社HPの予約フォームとシステムが直結。HPから入った予約が即座に管理画面に反映されます。</div><div class="fc-tag">管理コスト最小化</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 05</div><div class="fc-name">顧客管理</div><div class="fc-desc">顧客ごとの利用履歴・連絡先・支払い状況を一元管理。リピーター対応もスムーズに。</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 06</div><div class="fc-name">請求書発行</div><div class="fc-desc">貸出実績から請求書をワンクリックで発行。Totono-SeikYuと連携すれば売上管理まで一気通貫。</div></div>
+    </div>
+    <div class="fg3" style="margin-bottom:28px;">
+      <div class="fc"><div class="fc-num">FEATURE 07</div><div class="fc-name">直感的なUI設計</div><div class="fc-desc">現場スタッフがすぐ使えるシンプルな操作性。マニュアルなしで使い始められます。</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 08</div><div class="fc-name">初期チューニング込み</div><div class="fc-desc">業種・業務フローに合わせて導入時にカスタマイズ。レンタカー・整備・あらゆる業態に対応します。</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 09</div><div class="fc-name">汎用型・業種を選ばない</div><div class="fc-desc">レンタカー・整備工場・建設機械・イベント用品・医療機器など、あらゆるレンタル業に対応。</div></div>
+    </div>
+
+    <div class="hp-box">
+      <div class="hp-badge">HP連動</div>
+      <div class="hp-text"><strong>自社HPの予約フォームと管理システムが直結。</strong>HPから入った予約・問い合わせが即座に管理画面に反映されるため、二重入力ゼロ・転記ミスゼロ。運用コストを限りなく最小化します。</div>
+    </div>
+
+    <div class="sl"><div class="sl-text">VOICE</div><div class="sl-line"></div></div>
+    <div class="voice-grid">
+      <div class="vc">
+        <div class="vc-q">&ldquo;</div>
+        <div class="vc-body">HPと管理システムが繋がっているのが特に助かっています。予約が入ると即座に反映されるので、電話対応とダブルブッキングのストレスがなくなりました。痒い所に手が届くシステムです。</div>
+        <div class="vc-meta">
+          <div class="vc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div><div class="vc-name">レンタカー会社 A社様</div><div class="vc-desc">北海道・車両20台規模</div></div>
+        </div>
+      </div>
+      <div class="vc">
+        <div class="vc-q">&ldquo;</div>
+        <div class="vc-body">整備工場での車両管理に使っています。入出庫の管理が劇的に楽になり、顧客への対応スピードも上がりました。現場を知っている人が作ったと感じる使いやすさです。</div>
+        <div class="vc-meta">
+          <div class="vc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div><div class="vc-name">自動車整備工場 B社様</div><div class="vc-desc">車両管理・顧客管理に導入</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sl"><div class="sl-text">INDUSTRY</div><div class="sl-line"></div></div>
+    <div class="ind-grid">
+      <div class="ind">
+        <div class="ind-title">レンタカー・車両レンタル</div>
+        <div class="ind-item"><div class="ind-dot"></div><div>車両の貸出・返却・在庫を一元管理</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>予約サイト・HPと完全連動</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>ダブルブッキング防止</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>導入実績あり</div></div>
+      </div>
+      <div class="ind">
+        <div class="ind-title">自動車整備・車両管理</div>
+        <div class="ind-item"><div class="ind-dot"></div><div>入出庫管理・整備履歴を記録</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>顧客ごとの車両履歴を一元管理</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>請求書発行までワンストップ</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>導入実績あり</div></div>
+      </div>
+      <div class="ind">
+        <div class="ind-title">その他レンタル業全般</div>
+        <div class="ind-item"><div class="ind-dot"></div><div>建設機械・イベント用品レンタル</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>医療機器・スポーツ用品レンタル</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>家電・家具レンタル</div></div>
+        <div class="ind-item"><div class="ind-dot"></div><div>初期チューニングで業種に最適化</div></div>
+      </div>
+    </div>
+
+    <div class="sl"><div class="sl-text">PRICING</div><div class="sl-line"></div></div>
+    <div class="pg">
+      <div class="pc feat">
+        <div class="pc-top"><div class="pc-badge">買い切りプラン</div></div>
+        <div class="pc-plan">PURCHASE PLAN</div>
+        <div class="pc-amt">3,000,000<span class="pc-unit">円（税別）</span></div>
+        <div class="pc-note">導入後は月額費用なし。業務フローに合わせた初期チューニング込み。データは自社で完全管理。</div>
+        <div class="pc-add">+ 保守サポート 月10,000円（任意）</div>
+        <div class="pc-div"></div>
+        <div class="pc-li"><span class="pc-ck">—</span>全機能を永続利用</div>
+        <div class="pc-li"><span class="pc-ck">—</span>業種・業務フローに合わせた初期設定</div>
+        <div class="pc-li"><span class="pc-ck">—</span>追加カスタマイズ対応（別途見積）</div>
+        <div class="pc-li"><span class="pc-ck">—</span>予約サイト連動込み</div>
+        <div class="pc-li"><span class="pc-ck">—</span>同等システムの外注開発費用 約600万円相当</div>
+      </div>
+      <div class="pc saas">
+        <div class="pc-top"><div class="pc-badge">SaaSプラン</div></div>
+        <div class="pc-plan">MONTHLY PLAN</div>
+        <div class="pc-amt">28,000<span class="pc-unit">円/月（税別）</span></div>
+        <div class="pc-note">初期費用不要。すぐに使い始められます。システム更新・保守はすべて込み。</div>
+        <div class="pc-div"></div>
+        <div class="pc-li"><span class="pc-ck">—</span>全機能が使い放題</div>
+        <div class="pc-li"><span class="pc-ck">—</span>システム更新・保守込み</div>
+        <div class="pc-li"><span class="pc-ck">—</span>年払い割引あり（要相談）</div>
+        <div class="pc-li" style="opacity:.6;"><span>—</span>予約サイト連動は別途</div>
+        <div class="pc-li" style="opacity:.35;"><span>—</span>カスタマイズ対応なし</div>
+      </div>
+    </div>
+
+    <div class="ft">
+      <div class="fn">
+        ※ 価格はすべて税別。カスタマイズ・追加連携費用は別途お見積もりいたします。<br>
+        ※ 保守サポート（月10,000円）は任意。買い切りプランへの後付けも可能です。
+      </div>
+      <a href="mailto:info@romu.ai" class="cbtn">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-logo">Totono<span>.</span> by romu.ai</div>
+    <div class="footer-company">合同会社グレースコンサルティング</div>
+  </div>
+  <div class="footer-links">
+    <a href="/" class="footer-link">トップページ</a>
+    <a href="/seikyu.html" class="footer-link">SeikYu</a>
+    <a href="mailto:info@romu.ai" class="footer-link">お問い合わせ</a>
+  </div>
+  <div class="footer-copy">&copy; 合同会社グレースコンサルティング</div>
+</footer>
+
+</body>
+</html>
