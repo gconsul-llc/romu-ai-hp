@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totono-Meisai | 給与明細配信システム - romu.ai</title>
+  <meta name="description" content="月1,100円から始められる給与明細のデジタル化。印刷・封入・手渡しの手間をゼロに。台帳出力にも対応。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:#F4F1EC;font-family:'Noto Sans JP',sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    .nav{max-width:900px;margin:0 auto;background:white;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:.5px solid #e0ddd8;}
+    .nav-logo{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:600;color:#1C2B4A;}
+    .nav-logo span{color:#B8905A;}
+    .nav-links{display:flex;gap:24px;align-items:center;}
+    .nav-link{font-size:12px;color:#777;text-decoration:none;}
+    .nav-link:hover{color:#1C2B4A;}
+    .nav-cta{background:#1C2B4A;color:white;font-size:12px;padding:8px 18px;border-radius:4px;text-decoration:none;font-family:inherit;letter-spacing:.03em;}
+    .nav-cta:hover{background:#263a5e;}
+    .p{max-width:900px;margin:0 auto;background:white;}
+    .hero{background:#1C2B4A;color:white;padding:52px 56px 44px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-20px;right:60px;width:1px;height:200%;background:white;opacity:.05;transform:rotate(15deg);}
+    .hero::after{content:'';position:absolute;top:-20px;right:130px;width:1px;height:200%;background:white;opacity:.04;transform:rotate(15deg);}
+    .hero-brand{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+    .hero-product{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:600;color:white;}
+    .hero-product em{color:#B8905A;font-style:normal;}
+    .hero-domain{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;border-left:.5px solid rgba(255,255,255,.15);padding-left:10px;}
+    .htag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,144,90,.45);color:rgba(184,144,90,.9);font-size:11px;padding:5px 16px;border-radius:2px;letter-spacing:.1em;margin-bottom:20px;}
+    .htag::before{content:'';width:16px;height:1px;background:rgba(184,144,90,.7);}
+    .htitle{font-family:'Shippori Mincho',serif;font-size:36px;font-weight:500;line-height:1.25;margin:0 0 10px;color:white;}
+    .htitle-sub{font-size:18px;font-weight:400;color:rgba(255,255,255,.6);display:block;margin-bottom:18px;font-family:'Shippori Mincho',serif;}
+    .hsub{font-size:13px;color:rgba(255,255,255,.72);line-height:2;max-width:520px;font-weight:300;}
+    .ec-row{display:flex;gap:7px;margin-top:24px;flex-wrap:wrap;}
+    .ec-tag{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:11px;padding:4px 12px;border-radius:2px;}
+    .body{padding:44px 56px;}
+    .sl{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .sl-line{flex:1;height:.5px;background:#e0ddd8;}
+    .sl-text{font-size:10px;letter-spacing:.15em;color:#B8905A;font-weight:500;white-space:nowrap;}
+    .plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px;}
+    .plan{border-radius:8px;padding:28px;}
+    .plan.self{border:.5px solid #e0ddd8;}
+    .plan.support{border:1.5px solid #1C2B4A;}
+    .plan-top{display:flex;justify-content:flex-end;margin-bottom:16px;}
+    .plan-badge{font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;letter-spacing:.05em;}
+    .support .plan-badge{background:#1C2B4A;color:white;}
+    .self .plan-badge{background:#f5f4f1;color:#777;border:.5px solid #ccc;}
+    .plan-name{font-size:11px;color:#777;margin-bottom:6px;letter-spacing:.05em;}
+    .plan-amt{font-size:32px;font-weight:700;color:#1C2B4A;line-height:1;}
+    .plan-unit{font-size:12px;font-weight:400;color:#777;margin-left:3px;}
+    .plan-note{font-size:11px;color:#777;margin:8px 0;line-height:1.7;}
+    .plan-div{height:.5px;background:#e0ddd8;margin:14px 0;}
+    .plan-li{font-size:11px;color:#777;padding:3px 0;display:flex;gap:7px;line-height:1.6;}
+    .plan-ck{color:#1C2B4A;font-weight:700;flex-shrink:0;}
+    .plan-li.dim{opacity:.4;}
+    .fg3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+    .fc{padding:18px;border:.5px solid #e0ddd8;border-radius:8px;border-left:2px solid #1C2B4A;}
+    .fc.g{border-left-color:#B8905A;}
+    .fc-num{font-size:10px;color:#B8905A;font-weight:500;letter-spacing:.08em;margin-bottom:8px;}
+    .fc-name{font-size:12.5px;font-weight:500;margin-bottom:5px;color:#1C2B4A;}
+    .fc-desc{font-size:11px;color:#777;line-height:1.75;}
+    .fc-tag{display:inline-block;font-size:10px;background:rgba(28,43,74,.08);color:#1C2B4A;padding:2px 8px;border-radius:2px;margin-top:6px;}
+    .flow-box{background:#1C2B4A;border-radius:8px;padding:24px 28px;margin-bottom:32px;}
+    .flow-label{font-size:10px;color:rgba(184,144,90,.8);letter-spacing:.1em;margin-bottom:14px;}
+    .flow-steps{display:flex;align-items:center;gap:0;flex-wrap:nowrap;}
+    .flow-step{flex:1;text-align:center;padding:0 8px;}
+    .flow-num{font-size:9px;color:rgba(184,144,90,.7);font-weight:500;margin-bottom:6px;letter-spacing:.08em;}
+    .flow-name{font-size:11px;color:white;font-weight:500;}
+    .flow-sub{font-size:9px;color:rgba(255,255,255,.45);margin-top:3px;}
+    .flow-arrow{color:rgba(255,255,255,.2);font-size:14px;flex-shrink:0;}
+    .support-box{background:rgba(184,144,90,.08);border:.5px solid rgba(184,144,90,.25);border-radius:8px;padding:20px 24px;margin-bottom:32px;display:flex;gap:16px;align-items:flex-start;}
+    .support-badge{background:#B8905A;color:white;font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;white-space:nowrap;margin-top:2px;flex-shrink:0;}
+    .support-text{font-size:12px;color:#555;line-height:1.85;}
+    .support-text strong{color:#1C2B4A;font-weight:500;}
+    .target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px;}
+    .tg{padding:18px;border:.5px solid #e0ddd8;border-radius:8px;}
+    .tg-title{font-size:12.5px;font-weight:500;color:#1C2B4A;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid #e0ddd8;}
+    .tg-item{font-size:11px;color:#777;padding:3px 0;line-height:1.65;display:flex;gap:6px;}
+    .tg-dot{width:4px;height:4px;border-radius:50%;background:#B8905A;flex-shrink:0;margin-top:6px;}
+    .cmp-tbl{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:32px;}
+    .cmp-tbl th{background:#f5f4f1;padding:10px 14px;text-align:left;font-weight:500;color:#1C2B4A;border-bottom:.5px solid #ccc;font-size:11px;}
+    .cmp-tbl th.ours{color:#1C2B4A;}
+    .cmp-tbl td{padding:9px 14px;border-bottom:.5px solid #e0ddd8;color:#777;}
+    .cmp-tbl td.hl{color:#1C2B4A;font-weight:500;}
+    .cmp-tbl .dim{opacity:.45;}
+    .cmp-tbl tr.win td{background:rgba(28,43,74,.03);}
+    .cmp-tbl tr.win td.hl{font-weight:700;}
+    .cta{background:#f5f4f1;padding:48px 56px;text-align:center;}
+    .cta-title{font-family:'Shippori Mincho',serif;font-size:26px;font-weight:500;margin-bottom:12px;color:#1C2B4A;}
+    .cta-sub{font-size:13px;color:#777;line-height:1.9;margin-bottom:28px;}
+    .cta-btns{display:flex;gap:12px;justify-content:center;}
+    .btn-p{background:#1C2B4A;color:white;font-size:13px;font-weight:500;padding:12px 28px;border-radius:4px;cursor:pointer;border:none;font-family:inherit;letter-spacing:.03em;text-decoration:none;display:inline-block;}
+    .btn-p:hover{background:#263a5e;}
+    .btn-s{background:transparent;color:#1C2B4A;font-size:13px;padding:12px 28px;border-radius:4px;cursor:pointer;border:.5px solid #ccc;font-family:inherit;text-decoration:none;display:inline-block;}
+    .btn-s:hover{border-color:#1C2B4A;}
+    .footer{max-width:900px;margin:0 auto;background:#f5f4f1;padding:24px 56px;border-top:.5px solid #e0ddd8;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    .footer-left{display:flex;flex-direction:column;gap:4px;}
+    .footer-logo{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:600;color:#1C2B4A;}
+    .footer-logo span{color:#B8905A;}
+    .footer-company{font-size:11px;color:#777;}
+    .footer-links{display:flex;gap:20px;}
+    .footer-link{font-size:11px;color:#777;text-decoration:none;}
+    .footer-link:hover{color:#1C2B4A;}
+    .footer-note{font-size:11px;color:#777;line-height:1.9;}
+    @media(max-width:768px){
+      .nav{padding:16px 20px;}
+      .hero{padding:36px 24px 32px;}
+      .htitle{font-size:24px;}
+      .body{padding:28px 20px;}
+      .plan-grid{grid-template-columns:1fr;}
+      .fg3{grid-template-columns:1fr;}
+      .target-grid{grid-template-columns:1fr;}
+      .flow-steps{flex-wrap:wrap;gap:8px;}
+      .flow-arrow{display:none;}
+      .support-box{flex-direction:column;}
+      .cta{padding:36px 20px;}
+      .cmp-tbl{font-size:10px;}
+      .cmp-tbl th,.cmp-tbl td{padding:6px 8px;}
+      .footer{padding:24px 20px;flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">Totono<span>.</span></a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">トップ</a>
+    <a href="/seikyu" class="nav-link">SeikYu</a>
+    <a href="/rental" class="nav-link">Rental</a>
+    <a href="mailto:info@romu.ai" class="nav-cta">お問い合わせ</a>
+  </div>
+</nav>
+
+<div class="p">
+
+  <section class="hero">
+    <div class="hero-brand">
+      <div class="hero-product">Totono-<em>Meisai</em></div>
+      <div class="hero-domain">romu.ai &nbsp;|&nbsp; 合同会社グレースコンサルティング</div>
+    </div>
+    <div class="htag">給与明細配信システム</div>
+    <h1 class="htitle">
+      <span class="htitle-sub">ペーパーレス給与明細配信</span>
+      月1,100円から始められる、<br>給与明細のデジタル化。
+    </h1>
+    <p class="hsub">印刷・封入・手渡しの手間をゼロに。給与明細をクラウドで安全に配信。台帳出力にも対応。まず使ってみたい方はセルフプランで今すぐ始められます。</p>
+    <div class="ec-row">
+      <div class="ec-tag">ペーパーレス</div>
+      <div class="ec-tag">電子配信</div>
+      <div class="ec-tag">台帳出力</div>
+      <div class="ec-tag">30名まで対応</div>
+      <div class="ec-tag">メールサポートあり</div>
+    </div>
+  </section>
+
+  <div class="body">
+
+    <div class="sl"><div class="sl-text">PRICING</div><div class="sl-line"></div></div>
+    <div class="plan-grid">
+      <div class="plan self">
+        <div class="plan-top"><div class="plan-badge">セルフプラン</div></div>
+        <div class="plan-name">SELF PLAN（サポートなし）</div>
+        <div class="plan-amt">1,100<span class="plan-unit">円/月〜（税別）</span></div>
+        <div class="plan-note">自分で設定してみたい方向け。人数に応じて料金が変わります。</div>
+        <div class="plan-div"></div>
+        <div class="plan-li"><span class="plan-ck">—</span>〜30名：¥1,100/月</div>
+        <div class="plan-li"><span class="plan-ck">—</span>31〜60名：¥3,000/月</div>
+        <div class="plan-li"><span class="plan-ck">—</span>61名〜：¥6,000/月</div>
+        <div class="plan-div"></div>
+        <div class="plan-li"><span class="plan-ck">—</span>給与明細の電子配信</div>
+        <div class="plan-li"><span class="plan-ck">—</span>台帳出力</div>
+        <div class="plan-li dim"><span>—</span>メールサポートなし</div>
+      </div>
+      <div class="plan support">
+        <div class="plan-top"><div class="plan-badge">サポートプラン</div></div>
+        <div class="plan-name">SUPPORT PLAN（メールサポート付き）</div>
+        <div class="plan-amt">5,500<span class="plan-unit">円/月〜（税別）</span></div>
+        <div class="plan-note">初期設定サポートが欲しい方向け。不要になったらいつでも解除可能。</div>
+        <div class="plan-div"></div>
+        <div class="plan-li"><span class="plan-ck">—</span>〜30名：¥5,500/月</div>
+        <div class="plan-li"><span class="plan-ck">—</span>31〜60名：¥6,000/月</div>
+        <div class="plan-li"><span class="plan-ck">—</span>61名〜：¥9,000/月</div>
+        <div class="plan-div"></div>
+        <div class="plan-li"><span class="plan-ck">—</span>給与明細の電子配信</div>
+        <div class="plan-li"><span class="plan-ck">—</span>台帳出力</div>
+        <div class="plan-li"><span class="plan-ck">—</span>メールサポート付き</div>
+        <div class="plan-li"><span class="plan-ck">—</span>初期マッピング設定サポート</div>
+      </div>
+    </div>
+
+    <div class="support-box">
+      <div class="support-badge">サポートについて</div>
+      <div class="support-text"><strong>給与ソフトは2行マッピングで即連携。Excelはそのままインポート。</strong>既存のデータをそのまま使えるので移行の手間はほぼゼロです。それでも設定で詰まったときはサポートプランへ。月途中でのプラン変更も可能です。</div>
+    </div>
+
+    <div class="sl"><div class="sl-text">WORKFLOW</div><div class="sl-line"></div></div>
+    <div class="flow-box">
+      <div class="flow-label">DELIVERY FLOW</div>
+      <div class="flow-steps">
+        <div class="flow-step"><div class="flow-num">01</div><div class="flow-name">給与データ入力</div><div class="flow-sub">CSVまたは手入力</div></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><div class="flow-num">02</div><div class="flow-name">明細自動生成</div><div class="flow-sub">従業員ごとに作成</div></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><div class="flow-num">03</div><div class="flow-name">電子配信</div><div class="flow-sub">メール・ログイン</div></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><div class="flow-num">04</div><div class="flow-name">従業員が確認</div><div class="flow-sub">PC・スマホ対応</div></div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step"><div class="flow-num">05</div><div class="flow-name">台帳出力</div><div class="flow-sub">PDF・CSV</div></div>
+      </div>
+    </div>
+
+    <div class="sl"><div class="sl-text">FEATURES</div><div class="sl-line"></div></div>
+    <div class="fg3">
+      <div class="fc"><div class="fc-num">FEATURE 01</div><div class="fc-name">給与明細の電子配信</div><div class="fc-desc">印刷・封入・手渡し不要。従業員がPCやスマホからいつでも確認できます。</div><div class="fc-tag">ペーパーレス</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 02</div><div class="fc-name">台帳出力</div><div class="fc-desc">給与台帳をPDF・CSV形式で出力。経理・税務申告の資料として活用できます。</div></div>
+      <div class="fc"><div class="fc-num">FEATURE 03</div><div class="fc-name">30名まで対応</div><div class="fc-desc">中小企業・小規模事業者に最適なサイズ感。月1,000円から始められます。</div><div class="fc-tag">低コスト</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 04</div><div class="fc-name">既存データをそのまま使える</div><div class="fc-desc">給与ソフトをお使いの場合は2行のマッピング設定であっという間に連携完了。Excelで管理している場合はそのExcelの形式のままインポート可能。データの作り直し不要です。</div><div class="fc-tag">移行コストゼロ</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 05</div><div class="fc-name">メールサポート</div><div class="fc-desc">サポートプランでは設定・操作に関するメール対応が付きます。導入後も安心して使い続けられます。</div></div>
+      <div class="fc g"><div class="fc-num">FEATURE 06</div><div class="fc-name">プラン変更自由</div><div class="fc-desc">セルフプランで始めて、必要になったらサポートプランへ。月途中でもいつでも切り替え可能です。</div></div>
+    </div>
+
+    <div class="sl"><div class="sl-text">COST COMPARISON</div><div class="sl-line"></div></div>
+    <table class="cmp-tbl">
+      <tr>
+        <th></th>
+        <th class="ours">Totono-Meisai<br>セルフ</th>
+        <th class="ours">Totono-Meisai<br>サポートあり</th>
+        <th>給与計算ソフト<br>（大手）</th>
+        <th>紙・手渡し</th>
+      </tr>
+      <tr><td>月額コスト</td><td class="hl">&yen;1,000〜6,000</td><td class="hl">&yen;5,000〜9,000</td><td>&yen;3,000〜10,000</td><td>印刷・郵送費</td></tr>
+      <tr><td>電子配信</td><td class="hl">✓</td><td class="hl">✓</td><td>✓（機能による）</td><td class="dim">✗</td></tr>
+      <tr><td>台帳出力</td><td class="hl">✓</td><td class="hl">✓</td><td>✓（機能による）</td><td class="dim">手動</td></tr>
+      <tr><td>サポート</td><td class="dim">なし</td><td class="hl">メールサポート</td><td>有料オプション多</td><td class="dim">—</td></tr>
+      <tr class="win"><td><strong>導入のしやすさ</strong></td><td class="hl"><strong>今すぐ始められる</strong></td><td class="hl"><strong>サポート付きで安心</strong></td><td>設定が複雑</td><td class="dim">コスト・手間大</td></tr>
+    </table>
+
+    <div class="sl"><div class="sl-text">INDUSTRY</div><div class="sl-line"></div></div>
+    <div class="target-grid">
+      <div class="tg">
+        <div class="tg-title">小売・EC事業者</div>
+        <div class="tg-item"><div class="tg-dot"></div><div>アルバイト・パート多数の給与明細をペーパーレス化</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>印刷・封入の手間を完全になくす</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>台帳出力で経理業務も効率化</div></div>
+      </div>
+      <div class="tg">
+        <div class="tg-title">士業・コンサルティング</div>
+        <div class="tg-item"><div class="tg-dot"></div><div>少人数事務所のペーパーレス化に最適</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>顧問先への導入提案としても活用可</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>低コストで始められるから試しやすい</div></div>
+      </div>
+      <div class="tg">
+        <div class="tg-title">製造・サービス業</div>
+        <div class="tg-item"><div class="tg-dot"></div><div>現場スタッフの明細をスマホで確認</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>多様な雇用形態の明細を一元管理</div></div>
+        <div class="tg-item"><div class="tg-dot"></div><div>Totono-SeikYuと組み合わせて売上も管理</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="cta">
+    <h2 class="cta-title">まず¥1,100/月（税込）で始めてみませんか</h2>
+    <p class="cta-sub">セルフプランで今すぐ始められます。設定に不安があればサポートプランへ切り替えも可能。<br>お気軽にお問い合わせください。</p>
+    <div class="cta-btns">
+      <a class="btn-p" href="mailto:info@romu.ai">お問い合わせ・導入相談</a>
+      <a class="btn-s" href="/">サービス一覧に戻る</a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-logo">Totono<span>.</span> by romu.ai</div>
+    <div class="footer-company">合同会社グレースコンサルティング</div>
+  </div>
+  <div class="footer-links">
+    <a href="/" class="footer-link">トップ</a>
+    <a href="/privacy" class="footer-link">プライバシーポリシー</a>
+    <a href="/terms" class="footer-link">利用規約</a>
+    <a href="mailto:info@romu.ai" class="footer-link">お問い合わせ</a>
+  </div>
+  <div class="footer-note">
+    ※ 表示価格はすべて税別です。<br>
+    ※ セルフプランからサポートプランへの変更はいつでも可能です。
+  </div>
+</footer>
+
+</body>
+</html>
