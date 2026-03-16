@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totono-SeikYu | 請求・売上管理システム - romu.ai</title>
+<meta name="description" content="見積から入金回収まで全工程をカバー。楽天・Amazon・カラーミーの売上を自動同期。EC売上を自動統合できる唯一の請求管理システム。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f9fafb;
+  --color-border-secondary: #e5e7eb;
+  --color-border-tertiary: #e5e7eb;
+}
+html{scroll-behavior:smooth;}
+body{margin:0;padding:0;background:var(--color-background-primary);}
+*{box-sizing:border-box;margin:0;padding:0;}
+
+/* NAV */
+.nav{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:.5px solid var(--color-border-tertiary);font-family:'Noto Sans JP',sans-serif;}
+.nav-logo{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:600;color:var(--color-text-primary);text-decoration:none;}
+.nav-logo span{color:#B8905A;}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-link{font-size:12px;color:var(--color-text-secondary);text-decoration:none;letter-spacing:.03em;}
+.nav-link:hover{color:var(--color-text-primary);}
+.nav-cta{background:#1C2B4A;color:white;font-size:12px;padding:8px 18px;border-radius:4px;text-decoration:none;font-family:inherit;}
+.nav-cta:hover{background:#263a5e;}
+
+/* LP STYLES */
+.p{font-family:'Noto Sans JP',sans-serif;max-width:900px;margin:0 auto;color:var(--color-text-primary);}
+.hero{background:#1C2B4A;color:white;padding:52px 56px 44px;border-radius:16px 16px 0 0;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-20px;right:60px;width:1px;height:200%;background:white;opacity:.05;transform:rotate(15deg);}
+.hero::after{content:'';position:absolute;top:-20px;right:130px;width:1px;height:200%;background:white;opacity:.04;transform:rotate(15deg);}
+.hero-brand{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+.hero-logo{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:600;letter-spacing:.04em;color:white;}
+.hero-logo span{color:rgba(184,144,90,.9);}
+.hero-domain{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.08em;border-left:.5px solid rgba(255,255,255,.15);padding-left:12px;}
+.htag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,144,90,.45);color:rgba(184,144,90,.9);font-size:11px;padding:5px 16px;border-radius:2px;letter-spacing:.1em;margin-bottom:20px;}
+.htag::before{content:'';width:16px;height:1px;background:rgba(184,144,90,.7);}
+.htitle{font-family:'Shippori Mincho',serif;font-size:38px;font-weight:500;line-height:1.25;margin:0 0 10px;letter-spacing:.02em;}
+.htitle-sub{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:400;color:rgba(255,255,255,.6);display:block;margin-bottom:20px;letter-spacing:.05em;}
+.hsub{font-size:13px;opacity:.75;line-height:2;max-width:540px;font-weight:300;}
+.hero-hook{font-size:12px;color:rgba(184,144,90,.85);margin-top:14px;line-height:1.8;max-width:500px;}
+.ec-row{display:flex;gap:7px;margin-top:24px;flex-wrap:wrap;}
+.ec-tag{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:11px;padding:4px 12px;border-radius:2px;letter-spacing:.03em;}
+.body{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-top:none;border-radius:0 0 16px 16px;padding:44px 56px;}
+.sl{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.sl-line{flex:1;height:.5px;background:var(--color-border-tertiary);}
+.sl-text{font-size:10px;letter-spacing:.15em;color:#B8905A;font-weight:500;white-space:nowrap;}
+.flow{display:flex;align-items:stretch;gap:0;margin-bottom:10px;}
+.flow-step{flex:1;padding:12px 8px 10px;background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);text-align:center;}
+.flow-step:first-child{border-radius:8px 0 0 8px;}
+.flow-step:last-child{border-radius:0 8px 8px 0;}
+.flow-step.accent{border-color:#B8905A;border-left-width:2px;}
+.flow-step.stripe-s{border-color:#635BFF;border-left-width:2px;}
+.flow-num{font-size:9px;color:#B8905A;font-weight:500;letter-spacing:.08em;margin-bottom:5px;}
+.flow-num.stripe-n{color:#635BFF;}
+.flow-iw{width:30px;height:30px;border-radius:50%;background:var(--color-background-primary);border:.5px solid var(--color-border-secondary);margin:0 auto 6px;display:flex;align-items:center;justify-content:center;}
+.fsv{width:13px;height:13px;stroke:var(--color-text-secondary);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.fsv.stripe-sv{stroke:#635BFF;}
+.flow-label{font-size:10.5px;font-weight:500;color:var(--color-text-primary);}
+.flow-sub{font-size:9px;color:var(--color-text-secondary);margin-top:2px;}
+.flow-arr{width:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--color-background-secondary);border-top:.5px solid var(--color-border-tertiary);border-bottom:.5px solid var(--color-border-tertiary);}
+.flow-arr svg{width:8px;height:8px;stroke:var(--color-text-secondary);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.convert-bar{display:flex;align-items:center;margin:6px 0 32px;background:rgba(184,144,90,.08);border:.5px solid rgba(184,144,90,.25);border-radius:6px;padding:10px 16px;}
+.cb-icon{width:26px;height:26px;border-radius:50%;background:rgba(184,144,90,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:12px;}
+.cb-icon svg{width:12px;height:12px;stroke:#B8905A;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.cb-text{font-size:11.5px;color:#633806;line-height:1.6;flex:1;}
+.cb-text strong{color:#412402;font-weight:500;}
+.cb-badge{background:#B8905A;color:white;font-size:10px;padding:3px 10px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-left:12px;}
+.closing-box{background:#1C2B4A;border-radius:8px;padding:22px 26px;margin-bottom:32px;}
+.cld-top{display:flex;align-items:flex-start;gap:24px;}
+.cld-left{flex-shrink:0;min-width:200px;}
+.cld-label{font-size:10px;color:rgba(184,144,90,.8);letter-spacing:.1em;margin-bottom:6px;}
+.cld-title{font-family:'Shippori Mincho',serif;font-size:16px;color:white;font-weight:500;line-height:1.5;}
+.cld-sub{font-size:11px;color:rgba(184,144,90,.75);margin-top:4px;}
+.cld-pills{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;}
+.cld-pill{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:10px;padding:3px 9px;border-radius:2px;}
+.cld-pill.act{background:rgba(184,144,90,.25);color:rgba(184,144,90,.95);border:1px solid rgba(184,144,90,.4);}
+.cld-right{font-size:11px;color:rgba(255,255,255,.5);line-height:1.9;border-left:.5px solid rgba(255,255,255,.1);padding-left:22px;}
+.cld-right strong{color:rgba(255,255,255,.85);font-weight:500;}
+.cld-divider{height:.5px;background:rgba(255,255,255,.08);margin:14px 0;}
+.cld-note{font-size:10.5px;color:rgba(255,255,255,.3);}
+.fg3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+.fc{padding:18px;border:.5px solid var(--color-border-tertiary);border-radius:8px;border-left:2px solid #1C2B4A;}
+.fc.g{border-left-color:#B8905A;}
+.fc.stripe-fc{border-left-color:#635BFF;}
+.fc-num{font-size:10px;color:#B8905A;font-weight:500;letter-spacing:.08em;margin-bottom:8px;}
+.fc-num.stripe-num{color:#635BFF;}
+.fc-name{font-size:12.5px;font-weight:500;margin-bottom:5px;color:var(--color-text-primary);}
+.fc-desc{font-size:11px;color:var(--color-text-secondary);line-height:1.75;}
+.fc-tag{display:inline-block;font-size:10px;background:rgba(28,43,74,.08);color:#1C2B4A;padding:2px 8px;border-radius:2px;margin-top:6px;}
+.stripe-box{background:rgba(99,91,255,.06);border:.5px solid rgba(99,91,255,.2);border-radius:8px;padding:18px 24px;margin-bottom:16px;display:flex;gap:16px;align-items:flex-start;}
+.stripe-badge{background:#635BFF;color:white;font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;letter-spacing:.03em;white-space:nowrap;margin-top:2px;flex-shrink:0;}
+.stripe-text{font-size:12px;color:var(--color-text-secondary);line-height:1.85;flex:1;}
+.stripe-text strong{color:var(--color-text-primary);font-weight:500;}
+.fee-row{display:flex;gap:0;margin-top:12px;border:.5px solid var(--color-border-tertiary);border-radius:6px;overflow:hidden;}
+.fee-item{display:flex;flex-direction:column;gap:3px;padding:12px 14px;flex:1;background:var(--color-background-primary);}
+.fee-item.bad{background:rgba(194,48,48,.04);}
+.fee-item.good{background:rgba(15,110,86,.04);}
+.fee-item+.fee-item{border-left:.5px solid var(--color-border-tertiary);}
+.fee-header{font-size:10px;font-weight:500;letter-spacing:.04em;margin-bottom:7px;padding-bottom:6px;border-bottom:.5px solid var(--color-border-tertiary);}
+.fee-header.bad{color:#A32D2D;}
+.fee-header.good{color:#0F6E56;}
+.fee-line{display:flex;justify-content:space-between;align-items:center;padding:2px 0;}
+.fee-key{font-size:11px;color:var(--color-text-secondary);}
+.fee-val{font-size:12px;font-weight:700;}
+.fee-val.red{color:#A32D2D;}
+.fee-val.zero{color:#0F6E56;}
+.fee-val.blue{color:#635BFF;}
+.fee-total{font-size:11px;font-weight:700;margin-top:7px;padding-top:6px;border-top:.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center;}
+.inv-box{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:16px 22px;margin-bottom:28px;display:flex;gap:16px;align-items:flex-start;}
+.inv-badge{background:#1C2B4A;color:white;font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;white-space:nowrap;margin-top:2px;flex-shrink:0;}
+.inv-text{font-size:11.5px;color:var(--color-text-secondary);line-height:1.8;}
+.inv-text strong{color:var(--color-text-primary);font-weight:500;}
+.cost-wrap{margin-bottom:32px;overflow-x:auto;}
+.cost-tbl{width:100%;border-collapse:collapse;font-size:11.5px;}
+.cost-tbl th{background:var(--color-background-secondary);padding:10px 14px;text-align:left;font-weight:500;color:var(--color-text-primary);border-bottom:.5px solid var(--color-border-secondary);font-size:11px;letter-spacing:.03em;}
+.cost-tbl th.ours{color:#1C2B4A;}
+.cost-tbl td{padding:9px 14px;border-bottom:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);}
+.cost-tbl td.hl{color:#1C2B4A;font-weight:500;}
+.cost-tbl tr.win td{background:rgba(28,43,74,.04);}
+.cost-tbl tr.win td.hl{font-weight:700;font-size:13px;}
+.cost-tbl .dim{opacity:.5;}
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+.vc{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:22px;position:relative;}
+.vc-q{font-family:'Shippori Mincho',serif;font-size:40px;color:rgba(184,144,90,.2);position:absolute;top:10px;left:14px;line-height:1;}
+.vc-body{font-size:11.5px;color:var(--color-text-secondary);line-height:1.85;margin-bottom:14px;padding-top:6px;}
+.vc-meta{display:flex;align-items:center;gap:10px;border-top:.5px solid var(--color-border-tertiary);padding-top:12px;}
+.vc-icon{width:34px;height:34px;border-radius:50%;background:var(--color-background-primary);border:.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vc-icon svg{width:15px;height:15px;stroke:var(--color-text-secondary);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.vc-name{font-size:12px;font-weight:500;color:var(--color-text-primary);}
+.vc-desc{font-size:11px;color:var(--color-text-secondary);margin-top:1px;}
+.vc-result{font-size:16px;font-weight:700;color:#1C2B4A;margin-top:3px;}
+.vc-result span{font-size:10px;font-weight:400;color:var(--color-text-secondary);}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px;}
+.ind{padding:18px;border:.5px solid var(--color-border-tertiary);border-radius:8px;}
+.ind-title{font-size:12.5px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--color-border-tertiary);}
+.ind-item{font-size:11px;color:var(--color-text-secondary);padding:3px 0;line-height:1.65;display:flex;gap:6px;}
+.ind-dot{width:4px;height:4px;border-radius:50%;background:#B8905A;flex-shrink:0;margin-top:6px;}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+.pc{border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:26px;}
+.pc.feat{border-color:#1C2B4A;border-width:1.5px;}
+.pc-top{display:flex;justify-content:flex-end;margin-bottom:18px;}
+.pc-badge{font-size:10px;font-weight:500;padding:4px 10px;border-radius:2px;letter-spacing:.05em;}
+.feat .pc-badge{background:#1C2B4A;color:white;}
+.saas .pc-badge{background:var(--color-background-secondary);color:var(--color-text-secondary);border:.5px solid var(--color-border-secondary);}
+.pc-plan{font-size:10px;color:var(--color-text-secondary);margin-bottom:5px;letter-spacing:.05em;}
+.pc-amt{font-size:28px;font-weight:700;color:var(--color-text-primary);line-height:1;}
+.pc-unit{font-size:11px;font-weight:400;color:var(--color-text-secondary);margin-left:3px;}
+.pc-note{font-size:11px;color:var(--color-text-secondary);margin:8px 0 4px;line-height:1.7;}
+.pc-add{font-size:11px;color:#185FA5;margin-top:3px;}
+.pc-div{height:.5px;background:var(--color-border-tertiary);margin:14px 0;}
+.pc-li{font-size:11px;color:var(--color-text-secondary);padding:3px 0;display:flex;gap:7px;line-height:1.6;}
+.pc-ck{color:#1C2B4A;font-weight:700;flex-shrink:0;}
+.company-bar{background:var(--color-background-secondary);border-radius:8px;padding:16px 22px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.company-name{font-size:13px;font-weight:500;color:var(--color-text-primary);}
+.company-meta{display:flex;gap:16px;align-items:center;}
+.company-series{font-size:11px;color:var(--color-text-secondary);}
+.company-series span{font-family:'Shippori Mincho',serif;color:#B8905A;font-size:12px;}
+.company-url{font-size:12px;color:#185FA5;letter-spacing:.03em;}
+.ft{border-top:.5px solid var(--color-border-tertiary);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.fn{font-size:11px;color:var(--color-text-secondary);line-height:1.9;}
+.cbtn{background:#1C2B4A;color:white;font-size:12px;font-weight:500;padding:10px 22px;border-radius:4px;cursor:pointer;border:none;letter-spacing:.03em;text-decoration:none;font-family:inherit;}
+.cbtn:hover{background:#263a5e;}
+
+/* FOOTER */
+.footer{max-width:900px;margin:0 auto;padding:32px 40px;border-top:.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Noto Sans JP',sans-serif;}
+.footer-logo{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:600;}
+.footer-logo span{color:#B8905A;}
+.footer-copy{font-size:11px;color:var(--color-text-secondary);}
+.footer-links{display:flex;gap:20px;}
+.footer-link{font-size:11px;color:var(--color-text-secondary);text-decoration:none;}
+.footer-link:hover{color:var(--color-text-primary);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav{padding:16px 20px;}
+  .hero{padding:36px 24px 32px;border-radius:0;}
+  .htitle{font-size:24px;}
+  .body{padding:28px 20px;border-radius:0;}
+  .flow{flex-wrap:wrap;}
+  .flow-step{min-width:80px;}
+  .flow-arr{width:12px;}
+  .fg3{grid-template-columns:1fr;}
+  .cld-top{flex-direction:column;}
+  .cld-right{border-left:none;padding-left:0;border-top:.5px solid rgba(255,255,255,.1);padding-top:14px;}
+  .voice-grid{grid-template-columns:1fr;}
+  .ind-grid{grid-template-columns:1fr;}
+  .pg{grid-template-columns:1fr;}
+  .fee-row{flex-direction:column;}
+  .fee-item+.fee-item{border-left:none;border-top:.5px solid var(--color-border-tertiary);}
+  .stripe-box{flex-direction:column;}
+  .inv-box{flex-direction:column;}
+  .convert-bar{flex-direction:column;text-align:center;}
+  .cb-badge{margin-left:0;margin-top:8px;}
+  .footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">Totono<span>.</span></a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">トップ</a>
+    <a href="mailto:info@romu.ai" class="nav-cta">お問い合わせ</a>
+  </div>
+</nav>
+
+<div class="p">
+<div class="hero">
+  <div class="hero-brand">
+    <div class="hero-logo">Totono<span>-SeikYu</span></div>
+    <div class="hero-domain">romu.ai &nbsp;|&nbsp; 合同会社グレースコンサルティング</div>
+  </div>
+  <div class="htag">EC売上を自動統合できる、唯一の請求管理システム</div>
+  <h1 class="htitle"><span class="htitle-sub">請求管理システム</span>見積から入金回収まで、全工程をカバー</h1>
+  <p class="hsub">楽天・Amazon・カラーミーの売上を自動同期。見積書・納品書・請求書のワンクリック変換、定期請求の完全自動化、未入金時のStripe決済による確実な回収まで。</p>
+  <p class="hero-hook">— 請求代行サービスに年間100万円以上払う必要は、もうありません。</p>
+  <div class="ec-row">
+    <div class="ec-tag">楽天RMS API連携</div>
+    <div class="ec-tag">Amazon SP-API連携</div>
+    <div class="ec-tag">カラーミーショップ連携</div>
+    <div class="ec-tag">Stripe決済連携</div>
+    <div class="ec-tag">インボイス制度対応</div>
+    <div class="ec-tag">月4回締日・週締め対応</div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="sl"><div class="sl-text">WORKFLOW</div><div class="sl-line"></div></div>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-num">01</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="flow-label">見積書</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step"><div class="flow-num">02</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="flow-label">納品書</div><div class="flow-sub">自動変換</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step"><div class="flow-num">03</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="flow-label">請求書</div><div class="flow-sub">自動変換</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step accent"><div class="flow-num" style="color:#B8905A;">CHECK</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="flow-label">承認</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step"><div class="flow-num">04</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg></div><div class="flow-label">メール送付</div><div class="flow-sub">履歴管理</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step"><div class="flow-num">05</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="flow-label">月締め</div><div class="flow-sub">柔軟な締日</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step"><div class="flow-num">06</div><div class="flow-iw"><svg class="fsv" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="flow-label">入金管理</div><div class="flow-sub">未入金アラート</div></div>
+    <div class="flow-arr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flow-step stripe-s"><div class="flow-num stripe-n">STRIPE</div><div class="flow-iw" style="border-color:rgba(99,91,255,.3);"><svg class="fsv stripe-sv" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="flow-label">決済回収</div><div class="flow-sub">未入金時のみ</div></div>
+  </div>
+  <div class="convert-bar">
+    <div class="cb-icon"><svg viewBox="0 0 24 24"><polyline points="13 2 13 9 20 9"/><path d="M22 12V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"/><path d="M19 15v6M16 18h6"/></svg></div>
+    <div class="cb-text"><strong>ワンクリック変換</strong> — 見積書→納品書→請求書を1クリックで変換。二重入力ゼロ・転記ミスゼロで業務を加速します。</div>
+    <div class="cb-badge">自動変換対応</div>
+  </div>
+
+  <div class="sl"><div class="sl-text">KEY DIFFERENTIATOR</div><div class="sl-line"></div></div>
+  <div class="closing-box">
+    <div class="cld-top">
+      <div class="cld-left">
+        <div class="cld-label">CLOSING DATE FLEXIBILITY</div>
+        <div class="cld-title">月に最大4回の締日設定<br>週締め・中締めにも対応</div>
+        <div class="cld-sub">取引先ごとに個別設定 / 即時請求と併用可</div>
+        <div class="cld-pills">
+          <div class="cld-pill act">5日締め</div>
+          <div class="cld-pill act">15日締め</div>
+          <div class="cld-pill act">20日締め</div>
+          <div class="cld-pill act">末日締め</div>
+          <div class="cld-pill">即時請求</div>
+        </div>
+      </div>
+      <div class="cld-right">競合の多くは<strong>月末締め固定</strong>。<br>本システムは取引先ごとに<strong>月最大4回の締日</strong>を自由設定。<br>週単位・月中での中締め請求にも対応しており、<br>「即時請求」と「締日請求」を<strong>取引先単位で使い分け</strong>可能。<br>複数の支払サイクルを持つ<strong>卸売業・製造業に特に有効</strong>です。</div>
+    </div>
+    <div class="cld-divider"></div>
+    <div class="cld-note">※ 締日・支払サイクルは初期設定時に業種・業務フローに合わせてチューニングできます</div>
+  </div>
+
+  <div class="sl"><div class="sl-text">FEATURES</div><div class="sl-line"></div></div>
+  <div class="fg3">
+    <div class="fc"><div class="fc-num">FEATURE 01</div><div class="fc-name">EC売上の自動取込・集計</div><div class="fc-desc">楽天・Amazon・カラーミーをAPI連携。エアレジ等CSVエクスポートにも対応し、EC＋BtoB売上を日別・月別・事業部別に自動集計します。</div><div class="fc-tag">CSV一括取込対応</div></div>
+    <div class="fc"><div class="fc-num">FEATURE 02</div><div class="fc-name">商品マスタ・取引先別単価</div><div class="fc-desc">商品・取引先・単価マスタをCSVで一括登録。既存データをそのまま移行でき、導入初日からフルで使えます。会計ソフト連携のCSV出力にも対応。</div><div class="fc-tag">移行コストゼロ</div></div>
+    <div class="fc"><div class="fc-num">FEATURE 03</div><div class="fc-name">定期請求の完全自動化</div><div class="fc-desc">毎月・隔月・四半期の定期課金を自動処理。自動送信/承認後送信/手動の3モードを取引先ごとに設定できます。</div></div>
+    <div class="fc g"><div class="fc-num">FEATURE 04</div><div class="fc-name">未入金アラート・延滞管理</div><div class="fc-desc">1ヶ月未入金で自動アラートを発報。経過日数を色分け表示し、ダッシュボードで延滞状況を一覧把握。回収漏れを確実に防止します。</div><div class="fc-tag">回収漏れゼロ</div></div>
+    <div class="fc g"><div class="fc-num">FEATURE 05</div><div class="fc-name">メール送付・送信履歴管理</div><div class="fc-desc">請求書をワンクリックでメール送付。メール・郵送・FAX・手渡しの送付方法を記録し、督促・再送もすぐ対応できます。</div></div>
+    <div class="fc g"><div class="fc-num">FEATURE 06</div><div class="fc-name">請求書承認ワークフロー</div><div class="fc-desc">送付前に担当者→管理者の承認フローを設定。承認待ち一覧から差し戻し・承認をワンクリックで処理できます。</div></div>
+  </div>
+  <div class="fg3" style="margin-bottom:28px;">
+    <div class="fc stripe-fc"><div class="fc-num stripe-num">FEATURE 07</div><div class="fc-name">Stripe決済で未入金を確実回収</div><div class="fc-desc">未入金の取引先にオンライン決済リンクを送信。代行手数料ゼロ・通常の決済手数料もゼロ、未入金時のみStripe（3.6%）で回収します。</div></div>
+    <div class="fc"><div class="fc-num">FEATURE 08</div><div class="fc-name">事業所ごとの請求設定</div><div class="fc-desc">事業所・事業部単位で請求元・口座・インボイス番号を個別設定。複数ブランド・複数事業を持つ企業に最適です。</div></div>
+    <div class="fc"><div class="fc-num">FEATURE 09</div><div class="fc-name">消費税率の完全フリー設定</div><div class="fc-desc">10%・8%（軽減税率）・0%、将来の税率変更にも即対応。品目ごとに税率を自由設定し、混在処理も自動計算します。</div><div class="fc-tag">食品・飲料業に最適</div></div>
+  </div>
+
+  <div class="stripe-box">
+    <div class="stripe-badge">請求代行 不要</div>
+    <div class="stripe-text">
+      NP掛け払いなどの請求代行は、<strong>代行手数料（平均約3%）に加えて決済手数料も常時かかります。</strong>本システムなら代行手数料はゼロ。未入金が発生した場合のみStripe決済（3.6%）の決済手数料で確実に回収できます。月商500万円なら<strong>年間100万円以上のコスト削減</strong>になります。
+      <div class="fee-row">
+        <div class="fee-item bad">
+          <div class="fee-header bad">請求代行（従来）</div>
+          <div class="fee-line"><span class="fee-key">代行手数料</span><span class="fee-val red">約3%</span></div>
+          <div class="fee-line"><span class="fee-key">決済手数料</span><span class="fee-val red">常時発生</span></div>
+          <div class="fee-total"><span class="fee-key">常時</span><span class="fee-val red">両方かかる</span></div>
+        </div>
+        <div class="fee-item good">
+          <div class="fee-header good">Totono-SeikYu</div>
+          <div class="fee-line"><span class="fee-key">代行手数料</span><span class="fee-val zero">&yen;0</span></div>
+          <div class="fee-line"><span class="fee-key">決済手数料（通常）</span><span class="fee-val zero">&yen;0</span></div>
+          <div class="fee-line"><span class="fee-key">決済手数料（未入金時のみ）</span><span class="fee-val blue">3.6%</span></div>
+          <div class="fee-total"><span class="fee-key">決済手数料のみ</span><span class="fee-val zero">しかも未入金時だけ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv-box">
+    <div class="inv-badge">インボイス対応</div>
+    <div class="inv-text"><strong>適格請求書発行事業者登録番号（T番号）</strong>の印字、<strong>税率別・軽減税率混在の消費税自動計算・区分記載</strong>に標準対応。2023年10月施行のインボイス制度に完全準拠しています。</div>
+  </div>
+
+  <div class="sl"><div class="sl-text">COST COMPARISON</div><div class="sl-line"></div></div>
+  <div class="cost-wrap">
+    <table class="cost-tbl">
+      <tr>
+        <th style="width:22%;"></th>
+        <th class="ours">Totono-SeikYu（SaaS）</th>
+        <th class="ours">Totono-SeikYu（買い切り）</th>
+        <th>freee / マネフォ</th>
+        <th>請求代行</th>
+      </tr>
+      <tr><td>月額コスト</td><td class="hl">&yen;29,000</td><td class="hl">保守 &yen;10,000</td><td>&yen;20,000〜30,000</td><td>&yen;100,000〜</td></tr>
+      <tr><td>初期費用</td><td class="hl">&yen;0</td><td class="hl">&yen;900,000</td><td>&yen;0</td><td>&yen;0〜100,000</td></tr>
+      <tr><td>EC売上連携</td><td class="hl">込み</td><td class="hl">込み</td><td class="dim">なし</td><td class="dim">なし</td></tr>
+      <tr><td>締日の柔軟性</td><td class="hl">月4回・週締め</td><td class="hl">月4回・週締め</td><td class="dim">月末のみ</td><td class="dim">限定的</td></tr>
+      <tr class="win"><td><strong>3年間の総額</strong></td><td class="hl"><strong>&yen;1,044,000</strong></td><td class="hl"><strong>&yen;1,260,000</strong></td><td>&yen;900,000〜</td><td><strong>&yen;4,100,000〜</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="sl"><div class="sl-text">VOICE</div><div class="sl-line"></div></div>
+  <div class="voice-grid">
+    <div class="vc">
+      <div class="vc-q">&ldquo;</div>
+      <div class="vc-body">あるようでほかにないサービスで本当に助かっています。ECサービスとの日次連携で毎日の売上確認ができ、集計のストレスから解放されました。自社サイトの売上もレジも同じ画面から確認でき、痒いところに手が届きます。締日を自由に複数設定でき、承認システムも電話やメールでの確認が不要になり効率化が進んでいます。</div>
+      <div class="vc-meta">
+        <div class="vc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div><div class="vc-name">製造販売業 A社様</div><div class="vc-desc">年商1億円 / 楽天・Amazon・自社EC運営</div></div>
+      </div>
+    </div>
+    <div class="vc">
+      <div class="vc-q">&ldquo;</div>
+      <div class="vc-body">複数の事業体からの請求管理が必要で、源泉徴収が必要な項目と別会社からの請求との管理にいつもストレスがありました。定期請求書発行、未入金管理、売上管理画面もあるようでいて他にはないサービスで大変重宝しています。</div>
+      <div class="vc-meta">
+        <div class="vc-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div><div class="vc-name">士業事務所 B社様</div><div class="vc-desc">複数事業体の請求管理</div><div class="vc-result">業務時間 1/3 <span>に削減</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sl"><div class="sl-text">INDUSTRY</div><div class="sl-line"></div></div>
+  <div class="ind-grid">
+    <div class="ind">
+      <div class="ind-title">士業・コンサルティング</div>
+      <div class="ind-item"><div class="ind-dot"></div><div>顧問契約の定期請求を完全自動化</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>承認フローで誤請求・漏れを防止</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>複数事業体の請求を一元管理</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>送信履歴で「送った・送らない」トラブルゼロ</div></div>
+    </div>
+    <div class="ind">
+      <div class="ind-title">小売・EC事業者</div>
+      <div class="ind-item"><div class="ind-dot"></div><div>楽天・Amazon・カラーミー売上を自動集計</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>軽減税率・標準税率の品目別混在処理</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>請求代行コストをStripe連携で大幅削減</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>Excelでの請求管理から完全脱却</div></div>
+    </div>
+    <div class="ind">
+      <div class="ind-title">製造・卸売・複数事業者</div>
+      <div class="ind-item"><div class="ind-dot"></div><div>取引先ごとに月最大4回の締日を個別設定</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>事業所ごとに請求元・口座を分けて発行</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>得意先別単価・掛け率を個別管理</div></div>
+      <div class="ind-item"><div class="ind-dot"></div><div>CSVで既存マスタをそのまま移行</div></div>
+    </div>
+  </div>
+
+  <div class="sl"><div class="sl-text">PRICING</div><div class="sl-line"></div></div>
+  <div class="pg">
+    <div class="pc feat">
+      <div class="pc-top"><div class="pc-badge">買い切りプラン</div></div>
+      <div class="pc-plan">PURCHASE PLAN</div>
+      <div class="pc-amt">900,000<span class="pc-unit">円（税別）</span></div>
+      <div class="pc-note">導入後は月額費用なし。業務フローに合わせた初期チューニング込み。データは自社で完全管理。</div>
+      <div class="pc-add">+ 保守サポート 月10,000円（任意）</div>
+      <div class="pc-div"></div>
+      <div class="pc-li"><span class="pc-ck">—</span>全機能を永続利用</div>
+      <div class="pc-li"><span class="pc-ck">—</span>業種・業務フローに合わせた初期設定</div>
+      <div class="pc-li"><span class="pc-ck">—</span>追加カスタマイズ対応（別途見積）</div>
+      <div class="pc-li"><span class="pc-ck">—</span>4年以上の利用でSaaSより低コスト</div>
+    </div>
+    <div class="pc saas">
+      <div class="pc-top"><div class="pc-badge">SaaSプラン</div></div>
+      <div class="pc-plan">MONTHLY PLAN</div>
+      <div class="pc-amt">29,000<span class="pc-unit">円/月（税別）</span></div>
+      <div class="pc-note">初期費用不要。すぐに使い始められます。システム更新・保守はすべて込み。</div>
+      <div class="pc-div"></div>
+      <div class="pc-li"><span class="pc-ck">—</span>全機能が使い放題</div>
+      <div class="pc-li"><span class="pc-ck">—</span>システム更新・保守込み</div>
+      <div class="pc-li"><span class="pc-ck">—</span>年払い割引あり（要相談）</div>
+      <div class="pc-li" style="opacity:.35;"><span>—</span>カスタマイズ対応なし</div>
+    </div>
+  </div>
+
+  <div class="company-bar">
+    <div class="company-name">合同会社グレースコンサルティング</div>
+    <div class="company-meta">
+      <div class="company-series">Totonoシリーズ &nbsp;<span>業務が、整う。</span></div>
+      <div class="company-url">romu.ai</div>
+    </div>
+  </div>
+
+  <div class="ft">
+    <div class="fn">
+      ※ 価格はすべて税別。カスタマイズ・追加連携費用は別途お見積もりいたします。<br>
+      ※ 保守サポート（月10,000円）は任意。買い切りプランへの後付けも可能です。<br>
+      ※ Stripe決済手数料（3.6%）は未入金回収時のみ発生します。通常の銀行振込は無料です。
+    </div>
+    <a href="mailto:info@romu.ai" class="cbtn">お問い合わせ</a>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Totono<span>.</span> by romu.ai</div>
+  <div class="footer-links">
+    <a href="/" class="footer-link">トップページ</a>
+    <a href="#" class="footer-link">プライバシーポリシー</a>
+    <a href="mailto:info@romu.ai" class="footer-link">お問い合わせ</a>
+  </div>
+  <div class="footer-copy">&copy; 合同会社グレースコンサルティング</div>
+</footer>
+
+</body>
+</html>

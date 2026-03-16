@@ -76,18 +76,19 @@ body{margin:0;padding:0;background:var(--color-background-primary);}
 .sc-price-or{font-size:11px;color:var(--color-text-secondary);}
 
 /* ABOUT */
-.about{background:var(--color-background-secondary);padding:52px 40px;margin:0;}
-.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
-.about-label{font-size:10px;letter-spacing:.15em;color:#B8905A;font-weight:500;margin-bottom:16px;}
-.about-title{font-family:'Shippori Mincho',serif;font-size:26px;font-weight:500;line-height:1.5;margin-bottom:16px;}
-.about-text{font-size:12.5px;color:var(--color-text-secondary);line-height:2;}
-.about-meta{margin-top:24px;padding-top:20px;border-top:.5px solid var(--color-border-tertiary);}
-.about-company{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.about{background:var(--color-background-secondary);padding:64px 40px;margin:0;}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.about-catch{font-family:'Shippori Mincho',serif;font-size:24px;font-weight:500;line-height:1.75;margin-bottom:20px;}
+.about-catch em{color:#B8905A;font-style:normal;}
+.about-text{font-size:12.5px;color:var(--color-text-secondary);line-height:2.1;margin-bottom:24px;}
+.about-meta{padding-top:20px;border-top:.5px solid var(--color-border-tertiary);}
+.about-company{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
 .about-domain{font-size:12px;color:#185FA5;}
-.about-cards{display:flex;flex-direction:column;gap:12px;}
-.about-card{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:16px 20px;}
-.about-card-num{font-size:22px;font-weight:700;color:#1C2B4A;line-height:1;}
-.about-card-label{font-size:11px;color:var(--color-text-secondary);margin-top:4px;}
+.services{display:flex;flex-direction:column;gap:10px;}
+.svc{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:8px;padding:18px 20px;border-left:2px solid #1C2B4A;}
+.svc-label{font-size:10px;color:#B8905A;letter-spacing:.08em;font-weight:500;margin-bottom:6px;}
+.svc-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.svc-desc{font-size:11px;color:var(--color-text-secondary);line-height:1.7;}
 
 /* FOOTER */
 .footer{padding:32px 40px;border-top:.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
@@ -110,6 +111,7 @@ body{margin:0;padding:0;background:var(--color-background-primary);}
   .series-grid{grid-template-columns:1fr;}
   .about{padding:40px 20px;}
   .about-inner{grid-template-columns:1fr;gap:32px;}
+  .about-catch{font-size:20px;}
   .footer{padding:24px 20px;flex-direction:column;text-align:center;}
 }
 </style>
@@ -152,7 +154,7 @@ body{margin:0;padding:0;background:var(--color-background-primary);}
   <section class="series" id="series">
     <div class="sl"><div class="sl-text">TOTONO SERIES</div><div class="sl-line"></div></div>
     <div class="series-grid">
-      <div class="sc active">
+      <a href="/seikyu.html" class="sc active" style="text-decoration:none;color:inherit;">
         <div class="sc-ribbon ribbon-live">提供中</div>
         <div class="sc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
         <div class="sc-name">Totono-SeikYu</div>
@@ -171,7 +173,7 @@ body{margin:0;padding:0;background:var(--color-background-primary);}
           <div class="sc-price-num">&yen;900,000</div>
           <div class="sc-price-unit">買い切り</div>
         </div>
-      </div>
+      </a>
 
       <div class="sc">
         <div class="sc-ribbon ribbon-live">提供中</div>
@@ -227,28 +229,31 @@ body{margin:0;padding:0;background:var(--color-background-primary);}
 
   <!-- ABOUT -->
   <section class="about" id="about">
+    <div class="sl"><div class="sl-text">ABOUT</div><div class="sl-line"></div></div>
     <div class="about-inner">
       <div>
-        <div class="about-label">ABOUT</div>
-        <h2 class="about-title">専門家が作った、<br>専門家のための<br>業務システム</h2>
-        <p class="about-text">経営コンサルタントとして20年以上、中小企業の現場を見てきた経験から生まれたTotonoシリーズ。「あるようでなかった」機能を、AIと自動化で実現しました。士業・小売・製造・複数事業者のリアルな課題に答えます。</p>
+        <div class="about-catch">体験し、わかっている人が<br>つくっている。<br><em>だから安く、だから深い。</em></div>
+        <div class="about-text">労務・会計・経営改善を専門家と連携しながら一手に引き受け、20年にわたり中小企業の現場に向き合ってきた。その体験のすべてが、Totonoシリーズの設計に反映されています。<br><br>すべて内製開発だから低価格を実現できる。現場を知るから「あるようでなかった」機能が自然に揃う。ベンダーには出せない視点が、ここにあります。</div>
         <div class="about-meta">
           <div class="about-company">合同会社グレースコンサルティング</div>
           <div class="about-domain">romu.ai</div>
         </div>
       </div>
-      <div class="about-cards">
-        <div class="about-card">
-          <div class="about-card-num">20+</div>
-          <div class="about-card-label">年の経営コンサルティング実績</div>
+      <div class="services">
+        <div class="svc">
+          <div class="svc-label">SERVICE 01</div>
+          <div class="svc-title">労務管理</div>
+          <div class="svc-desc">社会保険労務士と提携し、雇用契約・社会保険・勤怠管理など労務業務を一括サポート。</div>
         </div>
-        <div class="about-card">
-          <div class="about-card-num">4</div>
-          <div class="about-card-label">業種に対応するSaaSシリーズ</div>
+        <div class="svc">
+          <div class="svc-label">SERVICE 02</div>
+          <div class="svc-title">バックオフィス請負</div>
+          <div class="svc-desc">税理士と連携し、記帳・決算から経理業務の構築・運用まで対応。</div>
         </div>
-        <div class="about-card">
-          <div class="about-card-num">&yen;0</div>
-          <div class="about-card-label">初期設定費用（SaaSプラン）</div>
+        <div class="svc">
+          <div class="svc-label">SERVICE 03</div>
+          <div class="svc-title">業務改善・収益改善コンサルティング</div>
+          <div class="svc-desc">20年の現場経験をもとに、業務フローの見直しとコスト構造の改善で収益体質を変える。つぶれた会社ゼロが自慢。</div>
         </div>
       </div>
     </div>
